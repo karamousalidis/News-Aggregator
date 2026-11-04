@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1000" viewBox="0 0 760 1000">
+<title>AI News Digest: illustrative email layout with fictional stories</title>
+<rect width="760" height="1000" fill="#f2f5fa"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="52" y="40" width="656" height="166" rx="16" fill="#243c83"/>
+<text x="80" y="82" fill="#c3d3ff" font-size="12" letter-spacing="2">YOUR DAILY SIGNAL</text>
+<text x="80" y="128" fill="#fff" font-size="34" font-weight="bold">AI News Digest</text>
+<text x="80" y="167" fill="#dae3ff" font-size="15">AI &amp; markets · 3 stories · last 24 hours</text>
+<rect x="52" y="232" width="656" height="206" rx="12" fill="#fff" stroke="#e0e6ef"/>
+<text x="80" y="263" fill="#5568d9" font-size="12" font-weight="bold">Example Research Journal</text>
+<text x="680" y="263" text-anchor="end" fill="#718096" font-size="12">Oct 30, 2026 · 05:15 UTC</text>
+<text x="80" y="298" fill="#18253b" font-size="22" font-weight="bold">Open models bring new tools to AI research</text>
+<text x="80" y="355" fill="#536176" font-size="15">Illustrative story: a research team releases open tools for evaluating</text>
+<text x="80" y="378" fill="#536176" font-size="15">language models. This demo uses fictional headlines, publishers, and</text>
+<text x="80" y="401" fill="#536176" font-size="15">excerpts.</text>
+<rect x="52" y="456" width="656" height="206" rx="12" fill="#fff" stroke="#e0e6ef"/>
+<text x="80" y="487" fill="#5568d9" font-size="12" font-weight="bold">Example Markets</text>
+<text x="680" y="487" text-anchor="end" fill="#718096" font-size="12">Oct 30, 2026 · 03:15 UTC</text>
+<text x="80" y="522" fill="#18253b" font-size="22" font-weight="bold">Your watchlist: the latest in AI infrastructure</text>
+<text x="80" y="579" fill="#536176" font-size="15">Illustrative story: follow the companies building chips, cloud platforms,</text>
+<text x="80" y="602" fill="#536176" font-size="15">and the infrastructure behind AI. Add your own ticker symbols to personalize</text>
+<text x="80" y="625" fill="#536176" font-size="15">the digest.</text>
+<rect x="52" y="680" width="656" height="206" rx="12" fill="#fff" stroke="#e0e6ef"/>
+<text x="80" y="711" fill="#5568d9" font-size="12" font-weight="bold">Example Technology Review</text>
+<text x="680" y="711" text-anchor="end" fill="#718096" font-size="12">Oct 30, 2026 · 01:15 UTC</text>
+<text x="80" y="746" fill="#18253b" font-size="22" font-weight="bold">A daily briefing, delivered to your inbox</text>
+<text x="80" y="803" fill="#536176" font-size="15">Illustrative story: public RSS headlines become a readable email with</text>
+<text x="80" y="826" fill="#536176" font-size="15">publisher links, publication times, and a plain-text alternative.</text>
+<text x="380" y="932" text-anchor="middle" fill="#718096" font-size="13">Illustrative layout · fictional stories · generated from the demo fixture</text>
+<text x="380" y="957" text-anchor="middle" fill="#718096" font-size="12">Public RSS headlines. A daily briefing in your inbox.</text>
+</g></svg>

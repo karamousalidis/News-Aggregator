@@ -1,0 +1,47 @@
+name: Daily news digest
+
+on:
+  schedule:
+    - cron: "15 8 * * *"
+      timezone: Europe/Athens
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview only (uncheck to send an email)
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-news-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.12"
+      - name: Collect headlines and deliver digest
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          DIGEST_RECIPIENTS: ${{ secrets.DIGEST_RECIPIENTS }}
+          WATCHLIST: ${{ vars.WATCHLIST }}
+          LOOKBACK_HOURS: "24"
+          MAX_ARTICLES: ${{ vars.MAX_ARTICLES || '30' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          PYTHONUNBUFFERED: "1"
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python news_digest.py --dry-run
+          else
+            python news_digest.py
+          fi

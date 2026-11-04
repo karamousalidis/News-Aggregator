@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python: ["3.12", "3.13", "3.14"]
+        include:
+          - os: windows-latest
+            python: "3.12"
+          - os: macos-latest
+            python: "3.12"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run offline regression suite
+        run: python -m unittest discover -s tests -v
+      - name: Verify deterministic sample stays current
+        run: python -m examples.generate_preview --check
+      - name: Verify source export
+        run: python -m tools.export_source
+      - name: Check macOS scheduler syntax
+        if: runner.os != 'Windows'
+        run: bash -n schedule_macos.sh
+      - name: Check Windows scheduler syntax
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile(
+            (Join-Path $PWD 'schedule.ps1'), [ref]$tokens, [ref]$errors
+          ) | Out-Null
+          if ($errors.Count) {
+            $errors | ForEach-Object { Write-Error $_.Message }
+            exit 1
+          }
